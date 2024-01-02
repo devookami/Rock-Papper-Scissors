@@ -11,30 +11,29 @@ function getComputerChoice() {
 
 // Treba napraviti f-ju koja ce da odigra jednu rundu papir kamen makaza.
 function playRound() {
-    const getPlayerChoice = prompt("Input your choise: ");
+    let getPlayerChoice = prompt("Input your choise: ");
     const randomComputerChoice = getComputerChoice();
     console.log("Player: " + getPlayerChoice);
     console.log("Computer: " + randomComputerChoice);
-
-    if (randomComputerChoice == "Rock" && getPlayerChoice == "Paper") {
-        console.log("player won!");
-    } else if (randomComputerChoice == "Rock" && getPlayerChoice == "Scissors") {
-        console.log("computer won!");
-    } else if (randomComputerChoice == "Rock" && getPlayerChoice == "Rock") {
-        console.log("it's a tie!");
-    } else if (randomComputerChoice == "Paper" && getPlayerChoice == "Paper") {
-        console.log("it's a tie!");
-    } else if (randomComputerChoice == "Paper" && getPlayerChoice == "Rock") {
-        console.log("computer won!");
-    } else if (randomComputerChoice == "Paper" && getPlayerChoice == "Scissors") {
-        console.log("player won!");
-    } else if (randomComputerChoice == "Scissors" && getPlayerChoice == "Scissors") {
-        console.log("it's a tie!");
-    } else if (randomComputerChoice == "Scissors" && getPlayerChoice == "Rock") {
-        console.log("player won!");
+    // determines who won and returns their respectabe value
+    if (
+        (randomComputerChoice == "Rock" && getPlayerChoice == "Paper") ||
+        (randomComputerChoice == "Paper" && getPlayerChoice == "Scissors") ||
+        (randomComputerChoice == "Scissors" && getPlayerChoice == "Rock")
+    ) {
+        console.log("Player won!");
+        return "p";
+    } else if (
+        (randomComputerChoice == "Rock" && getPlayerChoice == "Scissors") ||
+        (randomComputerChoice == "Paper" && getPlayerChoice == "Rock") ||
+        (randomComputerChoice == "Scissors" && getPlayerChoice == "Paper")
+    ) {
+        console.log("Computer won!");
+        return "c";
     } else {
-        console.log("computer won!")
+        console.log("It's a tie!");
+        return "t";
     }
 }
 // Treba napraviti f-ju koja ce da loop-uje *5 puta* f-ju runde, f-ja igre.
-playRound();
+
